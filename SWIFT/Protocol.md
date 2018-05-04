@@ -4,8 +4,7 @@
 
 ### Protocol is similar with Interface in JAVA
 
-```
-
+```Swift
 
 protocol Talkable{
 
@@ -28,7 +27,7 @@ protocol Talkable{
 
 ### Client
 
-```
+```Swift
 struct Person: Talkable{
     var topic: String
     var language: String
@@ -62,7 +61,7 @@ struct Person: Talkable{
 
 ### able to Inherentance
 
-```
+```Swift
 
 protocol Readable{
     func read()
@@ -96,7 +95,7 @@ struct SomeStruct: ReadWriteSpeakable{
 
 ### inherantance and protocol together
 
-```
+```Swift
 class SuperClass: Readable{
     func read(){
         print("read")
@@ -111,15 +110,14 @@ class SubClass: SuperClass, Writable, ReadSpeakable{
         print("speak")
     }
 }
+
 ```
-
-
 
 
 
 ### is, as
 
-```
+```Swift
 
 let sup: SuperClass = SuperClass()
 let sub: SubClass = SubClass()
