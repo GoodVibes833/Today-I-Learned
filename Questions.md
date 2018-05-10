@@ -78,9 +78,14 @@ Byte read write ?
 
 
 
-
-
 byte stream, character stream
 
 read write
 
+
+
+Arraylist -> linked list
+
+arraylist -> priority queue
+
+linkedlist -> priority queie
