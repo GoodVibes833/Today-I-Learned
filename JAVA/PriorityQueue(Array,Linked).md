@@ -1,6 +1,6 @@
 # PriorityQueue (ArrayList and LinkedList)
 
-
+* linkedList is more efficient because elements don't need to be shifted
 
 ### # PriorityQueue defined by ArrayList
 
