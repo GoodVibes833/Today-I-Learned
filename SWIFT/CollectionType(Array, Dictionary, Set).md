@@ -56,6 +56,42 @@ let immutableArray = [1,2,3]
 
 ```
 
+### # 2D Array
+
+```swift
+//declare
+
+var arr = [[Int]]() 
+var arr: [[Int]] = [] 
+let points: [[Int]] = [[10, 20], [30, 40]]
+var arr = Array(repeating: Array(repeating: 0, count: 2), count: 3)
+ //2 col x 3 rows
+
+//0 0
+//0 0
+//0 0
+
+// add data
+arr[0][0] = 12
+arr[1] = [123, 456, 789]
+
+//12  0 
+//123 456 789
+// 0  0
+
+arr[0] += 234
+
+//12  0   234
+//123 456 789
+//0   0
+
+//count
+
+var rows = arr.count
+var columns = arr[0].count
+
+```
+
 
 
 ### # Dictionary
