@@ -19,8 +19,15 @@ for (name, age) in people {
 //    C: 3
 //    B: 2
 //    A: 1
-
 }
+
+
+for n in 1...5 {
+    print(n)
+}
+
+// Output: 1 2 3 4 5
+
 ```
 
 
