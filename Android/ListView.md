@@ -1,0 +1,150 @@
+# # List View
+
+### # creat a sample view and use repeatly 
+
+
+
+### # main Activity
+
+```swift
+package com.derrick.park.demolistview;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    private String[] oses = {"Windows", "MacOS", "Linux"};
+    private int[]    imgs = {R.drawable.microsoft_logo, R.drawable.apple_logo, R.drawable.linux_logo};
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        ListView lv = findViewById(R.id.os_list);
+
+        // Adapter: translate java object -> View
+//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+//                this,
+//                android.R.layout.simple_list_item_1,
+//                new ArrayList<String>(Arrays.asList(oses))
+//        );
+
+        MyAdapter adapter = new MyAdapter(this, R.layout.mylist_layout, oses, imgs);
+        lv.setAdapter(adapter);
+
+        // Anonymous(no name) class
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getBaseContext(), oses[position], Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    private class MyAdapter extends ArrayAdapter<String> {
+        private int layoutResourceId;
+        private String[] data;
+        private int[] imgs;
+
+        public MyAdapter(@NonNull Context context, int resource, @NonNull String[] data, int[] imgs) {
+            super(context, resource, data);
+            this.layoutResourceId = resource;
+            this.data = data;
+            this.imgs = imgs;
+        }
+
+        @NonNull
+        @Override
+        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+            // 1. inflate our xml layout
+            convertView = getLayoutInflater().inflate(layoutResourceId, parent, false);
+            // 2. set img view and text view
+            ImageView img = convertView.findViewById(R.id.img_os);
+            TextView text = convertView.findViewById(R.id.text_os);
+            img.setImageResource(imgs[position]);
+            text.setText(data[position]);
+
+            return convertView;
+        }
+    }
+}
+```
+
+
+
+### # Activity
+
+```swift
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.derrick.park.demolistview.MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_gravity="center"
+        android:text="ListView Demo"/>
+
+    <ListView
+        android:id="@+id/os_list"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
+
+
+</LinearLayout>
+
+```
+
+
+
+### # myList Activity
+
+```swift
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="50dp">
+
+    <ImageView
+        android:id="@+id/img_os"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/text_os"
+        android:textSize="25sp"
+        android:paddingLeft="20dp"
+        android:paddingTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>
+```
+
+
+
+### 

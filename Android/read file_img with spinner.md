@@ -1,0 +1,130 @@
+# # Read text file, omg with Spinner
+
+
+
+### # condition
+
+1. locate imgs in Drawable folder
+2. locate text files in raw folder(need to create)
+
+
+
+### # main Activity
+
+```swift
+package ca.hjtaki.lab3;
+
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+import java.util.Scanner;
+
+public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        final Spinner spinner = findViewById(R.id.spinner);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ImageView imageView = findViewById(R.id.imageView);
+                TextView textView = findViewById(R.id.textView);
+
+                    String movieName = spinner.getItemAtPosition(position).toString();
+                    int id_draw = getResources().getIdentifier(movieName, "drawable", getPackageName());
+                    int id_raw = getResources().getIdentifier(movieName, "raw", getPackageName());
+
+                    if (parent.getSelectedItem().equals(movieName)) {
+                        imageView.setImageResource(id_draw);
+                        Scanner scan = new Scanner(getResources().openRawResource(id_raw));
+                        String allText = "";
+                        while (scan.hasNextLine()) {
+                            String line = scan.nextLine();
+                            allText += line; }
+                        textView.setText(allText);
+                        scan.close();
+                    }}
+
+
+
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }}
+
+```
+
+
+
+### # Activity.xml
+
+```swift
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="4dp"
+        android:entries="@array/movieList"/>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="232dp"
+        android:contentDescription="default"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textview" />
+
+</LinearLayout>
+```
+
+
+
+### # String.xml
+
+```swift
+<resources>
+    <string name="app_name">Lab3</string>
+    <string name="textview">TextView</string>
+    <array name="movieList">
+        <item>catch_me_if_you_can</item>
+        <item>flight_club</item>
+        <item>forrest_gump</item>
+        <item>good_will_hunting</item>
+        <item>pulp_fiction</item>
+        <item>god_father</item>
+        <item>the_hangover</item>
+        <item>the_shaw_shank_redemption</item>
+        <item>titanic</item>
+    </array>
+</resources>
+
+```
+
