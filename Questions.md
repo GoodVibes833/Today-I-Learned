@@ -89,3 +89,15 @@ Arraylist -> linked list
 arraylist -> priority queue
 
 linkedlist -> priority queie
+
+
+
+
+
+---------------------------------
+
+android
+
+
+
+activity -> queue ?
