@@ -53,9 +53,33 @@
 *.rar
 *.tar
 *.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 ```
 
 
+
+
+
+If you already have a file checked in, Git will not ignore the file if you add a rule later. You must untrack the file first, by running the following command in your terminal: 
+
+**git rm --cached FILENAME**
+
+**git commit -m "Any message"**
 
 
 
