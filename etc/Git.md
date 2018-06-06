@@ -31,7 +31,7 @@
 
 4. sample
 
-```java
+```vim
 # Compiled source #
 ###################
 *.com
@@ -75,11 +75,12 @@ Thumbs.db
 
 
 
-If you already have a file checked in, Git will not ignore the file if you add a rule later. You must untrack the file first, by running the following command in your terminal: 
+- If you already have a file already checked in, Git will not ignore the file if you add a rule later. You must untrack the file first, by running the following command in your terminal: 
 
-**git rm --cached FILENAME**
-
-**git commit -m "Any message"**
+```linux
+git rm --cached FILENAME
+git commit -m "Any message"
+```
 
 
 
