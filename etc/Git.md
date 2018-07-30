@@ -84,3 +84,45 @@ git commit -m "Any message"
 
 
 
+## Pull request
+
+- create own branch
+  - git branch
+  - git checkout -b "name"
+- push
+- pull request
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
